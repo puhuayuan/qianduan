@@ -1,0 +1,47 @@
+.caijingA{
+    height: 500px;
+    position: relative;
+    float: left;
+    margin-left: 80px;
+    margin-top: 60px;
+}
+.aaa p{
+    font-size: 40px;
+   margin-left: 80px;
+}
+.caijingAa{
+    background: rgb(255, 255, 255);
+    width: 500px;
+    float: left;
+    height: 400px;
+    margin:150px 0px 80px 120px;
+    position: absolute;
+    left: 600px;
+    padding-left:50px; 
+}
+.aaa{
+float: left;
+width: 700px;
+background: rgb(255, 255, 255);
+}
+.caijingAa a{
+   float: left;
+    align-items: inherit;
+   justify-items: initial;
+   display: block;
+}
+
+a:hover{
+    color:brown;
+    text-decoration: underline;
+}
+h4{
+    float: left;
+    margin: 100px 0px 0px 100px;
+    text-decoration: none;
+}
+h4 a{
+    font-weight: bold;
+    font-size: 20px;
+    
+}

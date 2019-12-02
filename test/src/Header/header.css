@@ -1,0 +1,29 @@
+.header{
+    height: 4em;
+    background-image: url(./header.jpg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5em;
+    color:beige;
+
+}
+.headerB{
+    width: 200px;
+    height: 700px;
+    background-image: url(./timg.jpg);
+    float: left;
+    font-size: 3em;
+}
+.headerBa{
+    margin:0 0 0 50px; 
+}
+.headerBb{
+    margin: 100px 0 0 50px;
+}
+.headerBc{
+    margin: 100px 0 0 50px;
+}
+.headerBd{
+    margin: 100px 0 0 50px;
+}
