@@ -26,6 +26,7 @@
     font-size: 1.5rem;
 }
 .register h5{
+    color:white;
     width: 50px;
     position: relative;
     left: 65px;
@@ -38,13 +39,13 @@
     background-color: cover;
 }
 .registerC{
+    opacity: 1;
     width: 360px;
     height: 444px;
     overflow: hidden;
-    background-color: white;
     position: relative;
-    top: 55px;
-    left: 75%;
+    top: 25%;
+    left: 40%;
     overflow: hidden;
 }
 .registerS{
@@ -161,21 +162,25 @@
     font-size: 1.1rem;
 }
 .mobile{
+    color:beige;
     position: relative;
     bottom: 316px;
     right: 83px;;
 }
 .mail{
+    color:beige;
     position: relative;
     bottom: 228px;
     right: 101px;
 }
 .lock{
+    color:beige;
     position: relative;
     bottom: 184px;
     right: 136px;
 }
 .check{
+    color:beige;
     position: relative;
     bottom: 272px;
     right: 119px;

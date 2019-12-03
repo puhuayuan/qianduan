@@ -14,10 +14,11 @@
     font-size: 1.5rem;
 }
 .Found h5{
-    font-size: 2em;
+    color: white;
+    font-size: 3em;
     position: relative;
-    right: 93px;
-    top: 30px;
+    right: 20%;
+    top: 15%;
 }
 .FoundB{
     background-size: 100%;
@@ -27,13 +28,13 @@
     background-color: cover;
 }
 .FoundC{
-    width: 360px;
-    height: 444px;
+    opacity: 1;
+    width: 25%;
+    height: 40%;
     overflow: hidden;
-    background-color: white;
     position: relative;
-    top: 55px;
-    left: 75%;
+    top: 20%;
+    left: 40%;
 }
 .FoundS{
     font-size: 1rem;
@@ -96,26 +97,31 @@
     top: 33px;
 }
 .found{
+    color:beige;
     width: 50px;
     position: relative;
     left: 244px;
     bottom: 15px;
 }
 .like{
+   color:beige;
    right: 135px;
    position: relative;
 }
 .android{
+    color:beige;
     right: 100px;
     bottom: 95px;
     position: relative;
 }
 .lock{
+    color:beige;
     right: 125px;
     bottom: 30px;
     position: relative;
 }
 .bulb{
+    color:beige;
     right: 113px;
     bottom: 63px;
     position: relative;

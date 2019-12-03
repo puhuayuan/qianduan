@@ -31,12 +31,13 @@ export default class LoginPage extends React.Component{
             <div >
             <Icon type="mobile" className={loginCSS.mobile} />
             <Icon type="lock" className={loginCSS.lock} />
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
             
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    
         )
     }
 }

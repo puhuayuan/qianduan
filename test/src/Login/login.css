@@ -10,6 +10,7 @@
     font-size: 1.5rem;
 }
 .login h5{
+    color:white;
     position: relative;
     right: 93px;
     top: 30px;
@@ -19,13 +20,13 @@
     background-color: cover;
 }
 .loginC{
+    opacity: 1;
     width: 330px;
     height: 350px;
     overflow: hidden;
-    background-color: white;
     position: relative;
-    top: 55px;
-    left: 77%;
+    top: 30%;
+    left: 40%;
 }
 .loginS{
     font-size: 1rem;
@@ -94,11 +95,13 @@
     bottom: 15px;
 }
 .mobile{
+    color:beige;
     position: relative;
     bottom: 192px;
     right: 110px;;
 }
 .lock{
+    color:beige;
     position: relative;
     bottom: 150px;
     right: 126px;
