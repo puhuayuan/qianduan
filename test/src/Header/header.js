@@ -8,8 +8,9 @@ export default class Header extends React.Component {
         return (
             <div>
                 <div className={HeaderCss.header}>
-                <Link to="/guanlogin">管理端</Link>
-                    
+                    <div>
+                        <Link to="/guanlogin">管理端</Link>
+                    </div>
                     <div>
                     <Link to="/caijing">西希新闻网</Link>
                     </div>
