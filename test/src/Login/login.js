@@ -4,6 +4,10 @@ import {  Icon } from 'antd';
 var loginCSS= require('./login.css')
 
 export default class LoginPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={}
+    }
     render(){
         return(
             <div className={loginCSS.login}>
@@ -11,7 +15,7 @@ export default class LoginPage extends React.Component{
             <div className={loginCSS.loginC}> 
                <h5>账户登录</h5>
                <div className={loginCSS.loginS}>
-            <input type="text" placeholder="请输入手机号"></input>
+            <input type="text" placeholder="请输入手机号" value={this.state.value}></input>
             </div>
             <div className={loginCSS.logink}>
             <input type="text" placeholder="请输入密码"></input>
