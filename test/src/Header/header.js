@@ -19,6 +19,13 @@ export default class Header extends React.Component {
                         <Link to="/register">注册</Link>
                     </div>
                 </div>
+
+               
+
+
+
+
+
                 <div className={HeaderCss.headerB}>
                     <div className={HeaderCss.headerBa}>
                         <Link to="./caijing">财经</Link>
