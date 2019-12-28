@@ -17,52 +17,53 @@ export default class RegisterPage extends React.Component{
 
     upload = ()=>{
        
-        var xhr=new XMLHttpRequest()
-        var data={
-            "username":this.state.username,
-            "password":this.state.password,
+        //var xhr=new XMLHttpRequest()
+         var data={
+             "username":this.state.username,
+             "password":this.state.password,
             
-        }
-        xhr.open("post","/zou/doregist")
+         }
+        // xhr.open("post","/zou/doregist")
 
-        xhr.onreadystatechange=function(){
-            if(xhr.readystate==4){
-                if(xhr.readystate==200){
+        // xhr.onreadystatechange=function(){
+        //     if(xhr.readystate==4){
+        //         if(xhr.readystate==200){
                     
-                    console.log(xhr.responseText)
+        //             console.log(xhr.responseText)
                    
-                    var result=JSON.parse(xhr.responseText)
-                    if(result.state==null){
-                           message.info("用户已存在")
-                    }
-                }else{
-                     message.info("注册成功")
-                     this.props.history.push("/login")
-                }
-            }
-            
-        }
-        xhr.setRequestHeader('content-type','application/json')
-        xhr.send()
-
-
-
-        // fetch("/zou/doregist",{
-        //       method:"post",
-        //       body:JSON.stringify(data)
-
-        // }).then(response=>response.json())
-        // .then(result=>{
-        //     if(result.state==2){
-        // message.info("用户已存在")
-
-        //     }else if(result.state==1){
-        //         message.info("注册成功")
-
+        //             var result=JSON.parse(xhr.responseText)
+        //             if(result.state==null){
+        //                    message.info("用户已存在")
+        //             }
+        //         }else{
+        //              message.info("注册成功")
+        //              this.props.history.push("/login")
+        //         }
         //     }
-        // }).catch(e=>{
-        //     message.error(e);
-        // })
+            
+        // }
+        // xhr.setRequestHeader('content-type','application/json')
+        // xhr.send()
+
+
+
+        fetch("/zou/doregist",{
+              method:"post",
+              headers:{
+               "Content-Type":"application/json"
+              },
+              body:JSON.stringify(data)
+
+        }).then(response=>response.json())
+        .then(result=>{
+            if(result.state=="用户名重复，请重新输入"){
+        message.info("用户已存在")
+
+            }else if(result.state=="注册成功"){
+                message.info("注册成功")
+
+            }
+        })
     }  
 
    
@@ -90,7 +91,7 @@ export default class RegisterPage extends React.Component{
             <button>获取验证码</button>
             </div>
             <div className={registerCSS.registersr}>
-            <a><input type="password" placeholder="请输入6-18位密码，字母/数字/符号" name="password" value={this.state.password} onChange={e=>this.changeValue(e)}></input></a>
+            <input type="password" placeholder="请输入6-18位密码，字母/数字/符号" name="password" value={this.state.password} onChange={e=>this.changeValue(e)}></input>
             </div>
             <div className={registerCSS.registerl}>
             

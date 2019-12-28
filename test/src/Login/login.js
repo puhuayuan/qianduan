@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link,NavLink} from 'react-router-dom'
-import {  Icon } from 'antd';
+import {  Icon,message } from 'antd';
 var loginCSS= require('./login.css')
 
 export default class LoginPage extends React.Component{
@@ -8,6 +8,42 @@ export default class LoginPage extends React.Component{
         super(props);
         this.state={}
     }
+    changeValue=(e)=>{
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+
+    upload = ()=>{
+
+        var data={
+            "username":this.state.username,
+            "password":this.state.password,
+           
+        }
+       
+        fetch("/zou/dologin",{
+            method:"post",
+            headers:{
+             "Content-Type":"application/json"
+            },
+            body:JSON.stringify(data)
+
+      }).then(response=>response.json())
+      .then(result=>{
+          if(result.state=="密码或账号错误!"){
+            message.info("密码或账号错误!")
+
+          }else if(result.state=="登录成功"){
+              message.info("登录成功")
+             
+
+          }else{
+              console.log("登录失败")
+          }
+      })
+   
+        }
     render(){
         return(
             <div className={loginCSS.login}>
@@ -15,14 +51,14 @@ export default class LoginPage extends React.Component{
             <div className={loginCSS.loginC}> 
                <h5>账户登录</h5>
                <div className={loginCSS.loginS}>
-            <input type="text" placeholder="请输入手机号" value={this.state.value}></input>
+               <input type="text" placeholder="请输入用户名" name="username" value={this.state.username } onChange={e=>this.changeValue(e)}></input>
             </div>
             <div className={loginCSS.logink}>
-            <input type="text" placeholder="请输入密码"></input>
+            <input type="password" placeholder="请输入密码" name="password" value={this.state.password} onChange={e=>this.changeValue(e)}></input>
             </div>
             <div className={loginCSS.loginS}>
                 <Link to="/caijing">
-            <button>立即登录</button></Link>
+            <button onClick={this.upload()}>立即登录</button></Link>
             <div className={loginCSS.link}>
             <p className={loginCSS.register}><NavLink to="/register">立即注册</NavLink></p>
             </div>
