@@ -18,11 +18,11 @@ export default class RegisterPage extends React.Component{
     upload = ()=>{
        
         //var xhr=new XMLHttpRequest()
-         var data={
-             "username":this.state.username,
-             "password":this.state.password,
+        //  var data={
+        //      "userName":this.state.userName,
+        //      "passWord":this.state.passWord,
             
-         }
+        //  }
         // xhr.open("post","/zou/doregist")
 
         // xhr.onreadystatechange=function(){
@@ -46,22 +46,27 @@ export default class RegisterPage extends React.Component{
         // xhr.send()
 
 
-
+       
         fetch("/zou/doregist",{
               method:"post",
               headers:{
                "Content-Type":"application/json"
               },
-              body:JSON.stringify(data)
-
+              body:JSON.stringify({
+                  userName:this.state.userName,
+                  passWord:this.state.passWord
+              })
+        
         }).then(response=>response.json())
         .then(result=>{
             if(result.state=="用户名重复，请重新输入"){
-        message.info("用户已存在")
+              message.info("用户已存在")
 
             }else if(result.state=="注册成功"){
                 message.info("注册成功")
 
+            }else{
+                console.log('')
             }
         })
     }  
@@ -76,7 +81,7 @@ export default class RegisterPage extends React.Component{
                <div className={registerCSS.registera}><Link to="/login">＜</Link></div>
                <div><h5>注册</h5></div>
                <div className={registerCSS.registerS}>
-            <input type="text" placeholder="请输入用户名" name="username" value={this.state.username } onChange={e=>this.changeValue(e)}></input>
+            <input type="text" placeholder="请输入用户名" name="userName" value={this.state.userName ||''} onChange={e=>this.changeValue(e)}></input>
             </div>
     <div className={registerCSS.registery}>
             <a><input type="text" placeholder="请输入右边验证码" ></input></a>
@@ -91,7 +96,7 @@ export default class RegisterPage extends React.Component{
             <button>获取验证码</button>
             </div>
             <div className={registerCSS.registersr}>
-            <input type="password" placeholder="请输入6-18位密码，字母/数字/符号" name="password" value={this.state.password} onChange={e=>this.changeValue(e)}></input>
+            <input type="password" placeholder="请输入6-18位密码，字母/数字/符号" name="passWord" value={this.state.passWord ||''} onChange={e=>this.changeValue(e)}></input>
             </div>
             <div className={registerCSS.registerl}>
             
