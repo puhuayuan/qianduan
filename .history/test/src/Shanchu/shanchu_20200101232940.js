@@ -23,124 +23,134 @@ export default class ShanchuPage extends React.Component{
     
 
     saveUser = ()=>{
+            alert(this.state.userId)
+            alert('enter1')
             fetch("/show/querybyId",{
                 method:"post",
                 headers:{
                  "Content-Type":"application/json"
                 },
+                alert('enter2')
                 body:JSON.stringify({
-                    "userId":this.state.userId
+                    userId:this.state.userId
                    
                 })
     
             }).then(response=>response.json())
           .then(result=>{
-            console.log(result)
+              if(result!=null){
+            
+             console.log(result)
+             
+            }else{
+                message.info('查询失败')
+                
+            }
           })
         
        
         }
     
-//         deleteUser = ()=>{
+        deleteUser = ()=>{
         
-//           fetch("/show/delete",{
-//               method:"post",
-//               headers:{
-//                "Content-Type":"application/json"
-//               },
-//               body:JSON.stringify({
-//                 userId:this.state.userId
-//               })
+          fetch("/show/delete",{
+              method:"post",
+              headers:{
+               "Content-Type":"application/json"
+              },
+              body:JSON.stringify({
+                userId:this.state.userId
+              })
   
-//           }).then(response=>response.json())
-//         .then(result=>{
-//             if(result!=null){
-//            message.info('删除成功')
-//            console.log(result)
+          }).then(response=>response.json())
+        .then(result=>{
+            if(result!=null){
+           message.info('删除成功')
+           console.log(result)
            
-//           }else{
-//               message.info('删除失败')
+          }else{
+              message.info('删除失败')
             
-//           }
-//         })
+          }
+        })
       
      
-//       }
-//      query = ()=>{
+      }
+     query = ()=>{
         
-//       fetch("/news/querybyId",{
-//           method:"GET",
-//           headers:{
-//            "Content-Type":"application/json"
-//           },
-//           body:JSON.stringify({
-//             userId:this.state.userId
-//           })
+      fetch("/news/querybyId",{
+          method:"GET",
+          headers:{
+           "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            userId:this.state.userId
+          })
 
-//       }).then(response=>response.json())
-//     .then(result=>{
-//         if(result==null){
-//        message.info('删除成功')
-//        console.log(result)
+      }).then(response=>response.json())
+    .then(result=>{
+        if(result==null){
+       message.info('删除成功')
+       console.log(result)
        
-//       }else{
-//           message.info('删除失败')
+      }else{
+          message.info('删除失败')
         
-//       }
-//     })
+      }
+    })
   
  
-//   }
-//   querybyTitle = ()=>{
+  }
+  querybyTitle = ()=>{
         
-//     fetch("/news/querybyTitle",{
-//         method:"post",
-//         headers:{
-//          "Content-Type":"application/json"
-//         },
-//         body:JSON.stringify({
-//           title:this.state.title
-//         })
+    fetch("/news/querybyTitle",{
+        method:"post",
+        headers:{
+         "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          title:this.state.title
+        })
 
-//     }).then(response=>response.json())
-//   .then(result=>{
-//       if(result==null){
-//      message.info('删除成功')
-//      console.log(result)
+    }).then(response=>response.json())
+  .then(result=>{
+      if(result==null){
+     message.info('删除成功')
+     console.log(result)
      
-//     }else{
-//         message.info('删除失败')
+    }else{
+        message.info('删除失败')
       
-//     }
-//   })
+    }
+  })
 
 
-// }
-//    deleteNews = ()=>{
+}
+   deleteNews = ()=>{
         
-//     fetch("/news/delete",{
-//         method:"POST",
-//         headers:{
-//          "Content-Type":"application/json"
-//         },
-//         body:JSON.stringify({
-//           newsId:this.state.newsId
-//         })
+    fetch("/news/delete",{
+        method:"POST",
+        headers:{
+         "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          newsId:this.state.newsId
+        })
 
-//     }).then(response=>response.json())
-//   .then(result=>{
-//       if(result==null){
-//      message.info('删除成功')
-//      console.log(result)
+    }).then(response=>response.json())
+  .then(result=>{
+      if(result==null){
+     message.info('删除成功')
+     console.log(result)
      
-//     }else{
-//         message.info('失败成功')
+    }else{
+        message.info('失败成功')
       
-//     }
-//   })
+    }
+  })
 
 
-// }
+}
 
 
     render(){
@@ -181,6 +191,7 @@ export default class ShanchuPage extends React.Component{
                      <td><input type="text" placeholder="请输入用户id" name="userId" value={this.state.userId ||''} onChange={e=>this.changeValue(e)}></input></td>
                      <td>
                        <button onClick={this.saveUser()}>查询</button>
+                       <button onClick={this.deleteUser()}>删除</button>
                      </td>
                    </tr>
                 </table>
@@ -213,7 +224,11 @@ export default class ShanchuPage extends React.Component{
                    <td></td>
                    <td></td>
                  </tr>
-                    
+                    <tr className={ShanchuCSS.D}>
+                      <td><input type="text" placeholder="请输入标题" name="title" value={this.state.title ||''} onChange={e=>this.changeValue(e)} ></input></td>
+                      <td><input type="text" placeholder="请输入新聞id" name="newsId" value={this.state.newsId ||''} onChange={e=>this.changeValue(e)}></input></td>
+                      <td><button onClick={this.querybyTitle()} >查询</button><button onClick={this.deleteNews()} >删除</button></td>
+                    </tr>
                 </table>
                 </div>
               </div>

@@ -29,13 +29,20 @@ export default class ShanchuPage extends React.Component{
                  "Content-Type":"application/json"
                 },
                 body:JSON.stringify({
-                    "userId":this.state.userId
+                    userId:this.state.userId
                    
                 })
     
             }).then(response=>response.json())
           .then(result=>{
-            console.log(result)
+              if(result!=null){
+            
+             console.log(result)
+             
+            }else{
+                message.info('查询失败')
+                
+            }
           })
         
        
@@ -213,7 +220,8 @@ export default class ShanchuPage extends React.Component{
                    <td></td>
                    <td></td>
                  </tr>
-                    
+                    <tr className={ShanchuCSS.D}>
+                    </tr>
                 </table>
                 </div>
               </div>

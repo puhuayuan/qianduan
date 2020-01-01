@@ -15,7 +15,7 @@ export default class LoginPage extends React.Component{
     }
     
 
-    upload = ()=>{
+    upload = (userName,passWord)=>{
         
             fetch("/zou/dologin",{
                 method:"post",
@@ -29,7 +29,7 @@ export default class LoginPage extends React.Component{
     
             }).then(response=>response.json())
           .then(result=>{
-              if(result!=null){
+              if(result==null){
              message.info('登录失败')
              console.log(result)
              
@@ -51,14 +51,15 @@ export default class LoginPage extends React.Component{
                <h5>账户登录</h5>
                <div className={loginCSS.loginS}>
                <input type="text" placeholder="请输入用户名" name="userName" value={this.state.userName ||''} onChange={e=>this.changeValue(e)}></input>
+               
             </div>
             <div className={loginCSS.logink}>
             <input type="password" placeholder="请输入密码" name="passWord" value={this.state.passWord ||'' } onChange={e=>this.changeValue(e)}></input>
             </div>
             
             <div className={loginCSS.loginS}>
-            
             <button onClick={this.upload()}>立即登录</button>
+            
             <Link to="/caijing"></Link>
             <div className={loginCSS.link}>
             <p className={loginCSS.register}><NavLink to="/register">立即注册</NavLink></p>

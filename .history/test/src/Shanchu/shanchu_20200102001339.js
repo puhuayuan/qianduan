@@ -23,19 +23,26 @@ export default class ShanchuPage extends React.Component{
     
 
     saveUser = ()=>{
-            fetch("/show/querybyId",{
-                method:"post",
+            fetch("/show/querybyId?userId="+this.state.userId,{
+                method:"get",
                 headers:{
                  "Content-Type":"application/json"
                 },
-                body:JSON.stringify({
-                    "userId":this.state.userId
+                // body:JSON.stringify({
+                //     userId:this.state.userId
                    
-                })
+                // })
     
             }).then(response=>response.json())
           .then(result=>{
-            console.log(result)
+              if(result!=null){
+            
+             console.log(result)
+             
+            }else{
+                message.info('查询失败')
+                
+            }
           })
         
        
@@ -213,7 +220,11 @@ export default class ShanchuPage extends React.Component{
                    <td></td>
                    <td></td>
                  </tr>
-                    
+                    <tr className={ShanchuCSS.D}>
+                      <td><input type="text" placeholder="请输入标题" name="title" value={this.state.title ||''} onChange={e=>this.changeValue(e)} ></input></td>
+                      <td><input type="text" placeholder="请输入新聞id" name="newsId" value={this.state.newsId ||''} onChange={e=>this.changeValue(e)}></input></td>
+                      <td><button onClick={this.querybyTitle()} >查询</button><button onClick={this.deleteNews()} >删除</button></td>
+                    </tr>
                 </table>
                 </div>
               </div>

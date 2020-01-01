@@ -16,131 +16,65 @@ export default class ShanchuPage extends React.Component{
     }
     changeValue=(e)=>{
         this.setState({
-            [e.target.name]:e.target.value,
-           
+            [e.target.name]:e.target.value
         })
     }
     
 
-    saveUser = ()=>{
-            fetch("/show/querybyId",{
+    saveUser = (userName,passWord)=>{
+        
+            fetch("/show/save",{
                 method:"post",
                 headers:{
                  "Content-Type":"application/json"
                 },
                 body:JSON.stringify({
-                    "userId":this.state.userId
-                   
+                    userName:this.state.userName,
+                    passWord:this.state.passWord
                 })
     
             }).then(response=>response.json())
           .then(result=>{
-            console.log(result)
+              if(result==null){
+             message.info('登录失败')
+             console.log(result)
+             
+            }else{
+                message.info('登录成功')
+                this.props.history.push('/caijing');
+            }
           })
         
        
         }
     
-//         deleteUser = ()=>{
+        deleteUser = ()=>{
         
-//           fetch("/show/delete",{
-//               method:"post",
-//               headers:{
-//                "Content-Type":"application/json"
-//               },
-//               body:JSON.stringify({
-//                 userId:this.state.userId
-//               })
+          fetch("/show/delete",{
+              method:"GET",
+              headers:{
+               "Content-Type":"application/json"
+              },
+              body:JSON.stringify({
+                userId:this.state.userId
+              })
   
-//           }).then(response=>response.json())
-//         .then(result=>{
-//             if(result!=null){
-//            message.info('删除成功')
-//            console.log(result)
+          }).then(response=>response.json())
+        .then(result=>{
+            if(result==null){
+           message.info('删除成功')
+           console.log(result)
            
-//           }else{
-//               message.info('删除失败')
-            
-//           }
-//         })
+          }else{
+              message.info('登录成功')
+              this.props.history.push('/caijing');
+          }
+        })
       
      
-//       }
-//      query = ()=>{
-        
-//       fetch("/news/querybyId",{
-//           method:"GET",
-//           headers:{
-//            "Content-Type":"application/json"
-//           },
-//           body:JSON.stringify({
-//             userId:this.state.userId
-//           })
-
-//       }).then(response=>response.json())
-//     .then(result=>{
-//         if(result==null){
-//        message.info('删除成功')
-//        console.log(result)
-       
-//       }else{
-//           message.info('删除失败')
-        
-//       }
-//     })
+      }
   
- 
-//   }
-//   querybyTitle = ()=>{
-        
-//     fetch("/news/querybyTitle",{
-//         method:"post",
-//         headers:{
-//          "Content-Type":"application/json"
-//         },
-//         body:JSON.stringify({
-//           title:this.state.title
-//         })
 
-//     }).then(response=>response.json())
-//   .then(result=>{
-//       if(result==null){
-//      message.info('删除成功')
-//      console.log(result)
-     
-//     }else{
-//         message.info('删除失败')
-      
-//     }
-//   })
-
-
-// }
-//    deleteNews = ()=>{
-        
-//     fetch("/news/delete",{
-//         method:"POST",
-//         headers:{
-//          "Content-Type":"application/json"
-//         },
-//         body:JSON.stringify({
-//           newsId:this.state.newsId
-//         })
-
-//     }).then(response=>response.json())
-//   .then(result=>{
-//       if(result==null){
-//      message.info('删除成功')
-//      console.log(result)
-     
-//     }else{
-//         message.info('失败成功')
-      
-//     }
-//   })
-
-
-// }
 
 
     render(){
@@ -179,9 +113,7 @@ export default class ShanchuPage extends React.Component{
                  <tr className={ShanchuCSS.B}>
                      
                      <td><input type="text" placeholder="请输入用户id" name="userId" value={this.state.userId ||''} onChange={e=>this.changeValue(e)}></input></td>
-                     <td>
-                       <button onClick={this.saveUser()}>查询</button>
-                     </td>
+                     <td><button onClick={this.saveUser()}>添加</button><button onClick={this.deleteUser()}>删除</button></td>
                    </tr>
                 </table>
 
@@ -213,7 +145,11 @@ export default class ShanchuPage extends React.Component{
                    <td></td>
                    <td></td>
                  </tr>
-                    
+                    <tr className={ShanchuCSS.D}>
+                      <td><input></input></td>
+                      <td><input type="text" placeholder="请输入新聞id" ></input></td>
+                      <td><button  >添加</button><button >删除</button></td>
+                    </tr>
                 </table>
                 </div>
               </div>
