@@ -29,11 +29,13 @@ export default class LoginPage extends React.Component{
     
             }).then(response=>response.json())
           .then(result=>{
-              if(result=){
+              if(result!=null){
              message.info('登录失败')
              console.log(result)
+             
             }else{
                 message.info('登录成功')
+                this.props.history.push('/caijing');
             }
           })
         

@@ -26,20 +26,19 @@ export default class GuanLoginPage extends React.Component {
                 Aname:this.state.Aname,
                 Apassword:this.state.Apassword
             })
-
+          
         }).then(response=>response.json())
       .then(result=>{
-          if(result.state==="密码或账号错误!"){
-            message.info("密码或账号错误!")
-
-          }else if(result.state==="登录成功"){
-              message.info("登录成功")
+          if(result!=null){
+            message.info("登录成功!")
+            this.props.history.push('/guanli');
+          
           }else{
-              console.log()
-             
+              
+             console.log(result)
           }
       })
-   
+     
         }
     render() {
         return (
@@ -57,8 +56,8 @@ export default class GuanLoginPage extends React.Component {
                         <input type="password" placeholder="请输入密码" name="Apassword" value={this.state.Apassword ||'' } onChange={e=>this.changeValue(e)}></input>
                         </div>
                         <div className={GuanloginCSS.loginS}>
-                            <Link to="/guanli">
-                                <button>立即登录</button></Link>
+                            
+                                <button onClick={this.upload}>立即登录</button>
                             <div >
                                 <Icon type="heart"  className={GuanloginCSS.heart} />
                                 <Icon type="lock" className={GuanloginCSS.lock} />
