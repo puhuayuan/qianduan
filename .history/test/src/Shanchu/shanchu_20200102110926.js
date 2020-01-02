@@ -38,7 +38,7 @@ export default class ShanchuPage extends React.Component{
             console.log(result)
           })
         
-       //
+       
         }
     
         deleteUser = ()=>{

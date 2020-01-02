@@ -30,14 +30,12 @@ export default class LoginPage extends React.Component{
             }).then(response=>response.json())
           .then(result=>{
               alert(result)
-              if(result==null){
+              if(result!=null){
                 message.info("登录成功!")
                 this.props.history.push('/guanli');
             
-            }else if(result!=null) {
+            }else {
                 console.log(result)
-            }else{
-                message.info("登录成功!")
             }
           })
         
@@ -60,7 +58,7 @@ export default class LoginPage extends React.Component{
             </div>
             
             <div className={loginCSS.loginS}>
-             <Link to="/caijing"><button onClick={this.upload}>立即登录</button></Link>
+             <Link to="/caijing"><button>立即登录</button></Link>
             <Link to="/caijing"></Link>
             <div className={loginCSS.link}>
             <p className={loginCSS.register}><NavLink to="/register">立即注册</NavLink></p>

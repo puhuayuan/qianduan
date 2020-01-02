@@ -100,7 +100,7 @@ export default class RegisterPage extends React.Component{
             </div>
             <div className={registerCSS.registerl}>
             
-            <Link to="/login"><button onClick={this.upload()}>注册</button></Link>
+            <button onClick={this.upload()}>注册</button>
             </div>
             <div className={registerCSS.registerla}>
                 <Link to="/login">登录</Link>

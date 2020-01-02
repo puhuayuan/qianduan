@@ -57,7 +57,7 @@ export default class GuanLoginPage extends React.Component {
                         </div>
                         <div className={GuanloginCSS.loginS}>
                             
-                                <Link to="shanchu"><button onClick={this.upload}>立即登录</button></Link>
+                                <button onClick={this.upload}>立即登录</button>
                             <div >
                                 <Icon type="heart"  className={GuanloginCSS.heart} />
                                 <Icon type="lock" className={GuanloginCSS.lock} />
